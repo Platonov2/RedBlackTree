@@ -12,7 +12,7 @@ namespace RedBlackTreeTests
         {
             RedBlackTreeClass redBlackTree = new RedBlackTreeClass();
 
-            redBlackTree.Add(1);
+            redBlackTree.InsertCase1(1);
 
             RedBlackTreeNode tempNode = new RedBlackTreeNode(1, true, null, null, null);
 
