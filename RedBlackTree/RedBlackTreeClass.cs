@@ -8,15 +8,14 @@ namespace RedBlackTree
     {
         public RedBlackTreeNode root;
 
+        public RedBlackTreeClass(int rootValue)
+        {
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(rootValue, Color.Black, null, null, null);
+            root = rootNode;
+        }
+
         public void Add(int value)
         {
-            if (root == null)
-            {
-                RedBlackTreeNode rootNode = new RedBlackTreeNode(value, Color.Black, null, null, null);
-                root = rootNode;
-                return;
-            }
-
             RedBlackTreeNode father = FindPlace(value);
 
             RedBlackTreeNode newNode = new RedBlackTreeNode(value, Color.Red, null, null, father);
@@ -27,12 +26,41 @@ namespace RedBlackTree
             }
             else father.rightChild = newNode;
 
-            InsertCase2(value);
+            InsertCase1(newNode);
         }
 
-        public void InsertCase2(int value)
+        public void InsertCase1(RedBlackTreeNode newNode)
         {
+            if (newNode.father == null)
+            {
+                newNode.color = Color.Black;
+            }
 
+            InsertCase2(newNode);
+        }
+
+        public void InsertCase2(RedBlackTreeNode newNode)
+        {
+            if (newNode.father.color == Color.Black)
+            {
+                return;
+            }
+
+            InsertCase3(newNode);
+        }
+
+        public void InsertCase3(RedBlackTreeNode newNode)
+        {
+            RedBlackTreeNode uncle = newNode.getUncle();
+            RedBlackTreeNode grandFather = newNode.getGrandFather();
+
+            if (uncle != null && uncle.color == Color.Red)
+            {
+                newNode.father.color = Color.Black;
+                uncle.color = Color.Black;
+                grandFather.color = Color.Red;
+
+            }
         }
 
         public RedBlackTreeNode Get(int value)

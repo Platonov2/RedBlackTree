@@ -12,9 +12,7 @@ namespace RedBlackTreeTests
         [TestMethod]
         public void Get()
         {
-            RedBlackTreeClass redBlackTree = new RedBlackTreeClass();
-
-            redBlackTree.Add(1);
+            RedBlackTreeClass redBlackTree = new RedBlackTreeClass(1);
 
             RedBlackTreeNode tempNode = new RedBlackTreeNode(1, Color.Black, null, null, null);
 
@@ -28,9 +26,7 @@ namespace RedBlackTreeTests
         [TestMethod]
         public void FindPlace()
         {
-            RedBlackTreeClass redBlackTree = new RedBlackTreeClass();
-
-            redBlackTree.Add(1);
+            RedBlackTreeClass redBlackTree = new RedBlackTreeClass(1);
 
             RedBlackTreeNode tempNode = new RedBlackTreeNode(1, Color.Black, null, null, null);
 
