@@ -46,7 +46,7 @@ namespace RedBlackTree
                     return currentNode;
                 }
 
-                if (currentNode.value < value && currentNode.leftChild != null)
+                if (currentNode.value > value && currentNode.leftChild != null)
                 {
                     currentNode = currentNode.leftChild;
                 }
@@ -69,13 +69,13 @@ namespace RedBlackTree
                     throw new ArgumentException("Данное значение уже есть в дереве");
                 }
 
-                if (currentNode.value < value)
+                if (currentNode.value > value)
                 {
                     if (currentNode.leftChild == null)
                         return currentNode;
                     else currentNode = currentNode.leftChild;
                 }
-                else if (currentNode.value > value)
+                else if (currentNode.value < value)
                 {
                     if (currentNode.rightChild == null)
                         return currentNode;
