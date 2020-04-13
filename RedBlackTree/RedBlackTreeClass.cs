@@ -27,6 +27,7 @@ namespace RedBlackTree
             else father.rightChild = newNode;
 
             InsertCase1(newNode);
+            InsertCase1(root);
         }
 
         public void InsertCase1(RedBlackTreeNode node)
@@ -34,6 +35,7 @@ namespace RedBlackTree
             if (node.father == null)
             {
                 node.color = Color.Black;
+                return;
             }
 
             InsertCase2(node);
