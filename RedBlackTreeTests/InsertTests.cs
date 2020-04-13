@@ -12,9 +12,9 @@ namespace RedBlackTreeTests
         {
             RedBlackTreeClass redBlackTree = new RedBlackTreeClass();
 
-            redBlackTree.InsertCase1(1);
+            redBlackTree.Add(1);
 
-            RedBlackTreeNode tempNode = new RedBlackTreeNode(1, true, null, null, null);
+            RedBlackTreeNode tempNode = new RedBlackTreeNode(1, Color.Black, null, null, null);
 
             Assert.AreEqual(redBlackTree.root, tempNode);
         }

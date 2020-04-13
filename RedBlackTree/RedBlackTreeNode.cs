@@ -3,17 +3,17 @@
     public class RedBlackTreeNode
     {
         public int value;
-        public bool isBlack;
+        public Color color;
 
         public RedBlackTreeNode leftChild;
         public RedBlackTreeNode rightChild;
 
         public RedBlackTreeNode father;
 
-        public RedBlackTreeNode(int value, bool isBlack, RedBlackTreeNode leftChild, RedBlackTreeNode rightChild, RedBlackTreeNode father)
+        public RedBlackTreeNode(int value, Color color, RedBlackTreeNode leftChild, RedBlackTreeNode rightChild, RedBlackTreeNode father)
         {
             this.value = value;
-            this.isBlack = isBlack;
+            this.color = color;
             this.leftChild = leftChild;
             this.father = father;
         }
@@ -48,7 +48,7 @@
              || (father == null && tempObj.father != null) || (father != null && tempObj.father == null))
                 return false;
 
-            return (value == tempObj.value && isBlack == tempObj.isBlack);
+            return (value == tempObj.value && color == tempObj.color);
         }
     }
 }

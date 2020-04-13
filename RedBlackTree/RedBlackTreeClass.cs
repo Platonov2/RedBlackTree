@@ -10,17 +10,24 @@ namespace RedBlackTree
 
         public void Add(int value)
         {
-            InsertCase1(value);
-        }
-
-        public void InsertCase1(int value)
-        {
             if (root == null)
             {
-                RedBlackTreeNode newNode = new RedBlackTreeNode(value, true, null, null, null);
-                root = newNode;
+                RedBlackTreeNode rootNode = new RedBlackTreeNode(value, Color.Black, null, null, null);
+                root = rootNode;
+                return;
             }
-            else InsertCase2(value);
+
+            RedBlackTreeNode father = FindPlace(value);
+
+            RedBlackTreeNode newNode = new RedBlackTreeNode(value, Color.Red, null, null, father);
+
+            if (father.value > value)
+            {
+                father.leftChild = newNode;
+            }
+            else father.rightChild = newNode;
+
+            InsertCase2(value);
         }
 
         public void InsertCase2(int value)
@@ -57,18 +64,22 @@ namespace RedBlackTree
 
             while (true)
             {
-                if (currentNode == null)
+                if (currentNode.value == value)
                 {
-                    return currentNode;
+                    throw new ArgumentException("Данное значение уже есть в дереве");
                 }
 
                 if (currentNode.value < value)
                 {
-                    currentNode = currentNode.leftChild;
+                    if (currentNode.leftChild == null)
+                        return currentNode;
+                    else currentNode = currentNode.leftChild;
                 }
                 else if (currentNode.value > value)
                 {
-                    currentNode = currentNode.rightChild;
+                    if (currentNode.rightChild == null)
+                        return currentNode;
+                    else currentNode = currentNode.rightChild;
                 }
             }
         }
