@@ -60,5 +60,25 @@ namespace RedBlackTreeTests
             Assert.AreEqual(redBlackTree.root.leftChild.leftChild, ll);
             Assert.AreEqual(redBlackTree.root.rightChild, r);
         }
+
+        [TestMethod]
+        public void Insert123()
+        {
+            RedBlackTreeClass redBlackTree = new RedBlackTreeClass(1);
+
+            redBlackTree.Add(2);
+            redBlackTree.Add(3);
+
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Red, null, null, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Red, null, null, rootNode);
+
+            rootNode.leftChild = l;
+            rootNode.rightChild = r;
+
+            Assert.AreEqual(redBlackTree.root, rootNode);
+            Assert.AreEqual(redBlackTree.root.leftChild, l);
+            Assert.AreEqual(redBlackTree.root.rightChild, r);
+        }
     }
 }

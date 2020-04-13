@@ -39,6 +39,52 @@
             return grandFather.leftChild;
         }
 
+        public static void RotateRight(RedBlackTreeNode node)
+        {
+            RedBlackTreeNode pivot = node.leftChild;
+
+            pivot.father = node.father;
+
+            if (node.father != null)
+            {
+                if (node.father.leftChild == node)
+                    node.father.leftChild = pivot;
+                else
+                    node.father.rightChild = pivot;
+            }
+
+            node.leftChild = pivot.rightChild;
+
+            if (pivot.rightChild != null)
+                pivot.rightChild.father = node;
+
+            node.father = pivot;
+            pivot.rightChild = node;
+        }
+
+        public static void RotateLeft(RedBlackTreeNode node)
+        {
+            RedBlackTreeNode pivot = node.rightChild;
+
+            pivot.father = node.father;
+
+            if (node.father != null)
+            {
+                if (node.father.leftChild == node)
+                    node.father.leftChild = pivot;
+                else
+                    node.father.rightChild = pivot;
+            }
+
+            node.rightChild = pivot.leftChild;
+
+            if (pivot.leftChild != null)
+                pivot.leftChild.father = node;
+
+            node.father = pivot;
+            pivot.leftChild = node;
+        }
+
         public override bool Equals(object obj)
         {
             RedBlackTreeNode tempObj = (RedBlackTreeNode) obj;
