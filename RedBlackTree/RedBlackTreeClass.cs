@@ -16,9 +16,17 @@ namespace RedBlackTree
 
         public void Add(int value)
         {
+            RedBlackTreeNode newNode = new RedBlackTreeNode(value, Color.Black, null);
+
+            if (root == null)
+            {
+                root = newNode;
+                return;
+            }
+
             RedBlackTreeNode father = FindPlace(value);
 
-            RedBlackTreeNode newNode = new RedBlackTreeNode(value, Color.Red, father);
+            newNode = new RedBlackTreeNode(value, Color.Red, father);
 
             if (father.value > value)
             {
@@ -111,32 +119,50 @@ namespace RedBlackTree
 
         public void Delete(int value)
         {
-            
-            RedBlackTreeNode replacedNode = Get(value);
-            RedBlackTreeNode deletedNodeNext = FindNext(replacedNode.value);
-            RedBlackTreeNode deletedNodePrev = FindPrev(replacedNode.value);
+            RedBlackTreeNode nodeForReplace = Get(value);
 
-            if (deletedNodePrev == null && deletedNodeNext == null)
+            if (nodeForReplace == root)
             {
-                DeleteCase1(replacedNode);
+                root = null;
                 return;
             }
 
-            if (deletedNodePrev == null && deletedNodeNext != null)
-            {
-                replacedNode.value = deletedNodeNext.value;
-            }
+            RedBlackTreeNode nodeForDelete = FindNext(nodeForReplace.value);
 
-            /*if (!RedBlackTreeNode.IsLeaf(deletedNode))
-                ReplaceNode(deletedNode);
+            nodeForReplace.value = nodeForDelete.value;
 
-
-            if (node.color == Color.Black)
-                if (child.color == Color.Red)
-                    child.color = Color.Black;
-                else DeleteCase1(child);*/
+            DeleteOneChild(nodeForDelete);
+            UpdateRoot(root);
         }
 
+        private void DeleteOneChild(RedBlackTreeNode node)
+        {
+            RedBlackTreeNode child = node.rightChild.value < 0 ? node.leftChild : node.rightChild;
+
+            ReplaceNode(node, child);
+            if (node.color == Color.Black)
+            {
+                if (child.color == Color.Red)
+                {
+                    child.color = Color.Black;
+                }
+                else
+                    DeleteCase1(child);
+            }
+        }
+
+        private void ReplaceNode(RedBlackTreeNode node, RedBlackTreeNode child)
+        {
+            child.father = node.father;
+            if (node.father == null)
+                return;
+            if (node == node.father.leftChild)
+            {
+                node.father.leftChild = child;
+            }
+            else
+                node.father.rightChild = child;
+        }
 
         private void DeleteCase1(RedBlackTreeNode node)
         {
@@ -294,24 +320,6 @@ namespace RedBlackTree
                 currentNode = currentNode.leftChild;
             }
             return currentNode.father;
-        }
-
-        public RedBlackTreeNode FindPrev(int value)
-        {
-            RedBlackTreeNode currentNode = Get(value);
-
-            if (currentNode.leftChild == null)
-            {
-                return null;
-            }
-
-            currentNode = currentNode.leftChild;
-
-            while (currentNode.rightChild != null)
-            {
-                currentNode = currentNode.rightChild;
-            }
-            return currentNode;
         }
 
         public void RotateRight(RedBlackTreeNode node)

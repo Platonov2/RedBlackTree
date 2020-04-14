@@ -30,9 +30,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode leftChild = new RedBlackTreeNode(1, Color.Red, null, null, rootNode);
             RedBlackTreeNode rightChild = new RedBlackTreeNode(3, Color.Red, null, null, rootNode);
 
-            rootNode.leftChild = leftChild;
-            rootNode.rightChild = rightChild;
-
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, leftChild);
             Assert.AreEqual(redBlackTree.root.rightChild, rightChild);
@@ -52,9 +49,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode l = new RedBlackTreeNode(4, Color.Black, rootNode);
             RedBlackTreeNode r = new RedBlackTreeNode(6, Color.Black, rootNode);
 
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
-
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);
             Assert.AreEqual(redBlackTree.root.leftChild.leftChild, ll);
@@ -72,9 +66,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null);
             RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Red, rootNode);
             RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Red, rootNode);
-
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
 
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);
@@ -94,10 +85,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, rootNode);
             RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Black, rootNode);
             RedBlackTreeNode rr = new RedBlackTreeNode(4, Color.Red, rootNode);    
-
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
-            r.rightChild = rr;
 
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);
@@ -120,11 +107,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode r = new RedBlackTreeNode(4, Color.Black, rootNode);
             RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Red, r);
             RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Red, r);
-
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
-            r.leftChild = rl;
-            r.rightChild = rr;
 
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);
@@ -150,12 +132,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Black, r);
             RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Black, r);
             RedBlackTreeNode rrr = new RedBlackTreeNode(6, Color.Red, rr);
-
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
-            r.leftChild = rl;
-            r.rightChild = rr;
-            rr.rightChild = rrr;
 
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);
@@ -186,15 +162,6 @@ namespace RedBlackTreeTests
             RedBlackTreeNode rl = new RedBlackTreeNode(7, Color.Black, r);
             RedBlackTreeNode rr = new RedBlackTreeNode(12, Color.Black, r);
             RedBlackTreeNode lrr = new RedBlackTreeNode(4, Color.Red, lr);
-
-            l.leftChild = ll;
-            l.rightChild = lr;
-            r.leftChild = rl;
-            r.rightChild = rr;
-            lr.rightChild = lrr;
-
-            rootNode.leftChild = l;
-            rootNode.rightChild = r;
 
             Assert.AreEqual(redBlackTree.root, rootNode);
             Assert.AreEqual(redBlackTree.root.leftChild, l);

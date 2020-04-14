@@ -14,7 +14,6 @@ namespace RedBlackTreeTests
         {
             RedBlackTreeClass redBlackTree = new RedBlackTreeClass(1);
 
-            RedBlackTreeNode nil = new RedBlackTreeNode(0, Color.Black, null);
             RedBlackTreeNode tempNode = new RedBlackTreeNode(1, Color.Black, null);
 
             RedBlackTreeNode getNode1 = redBlackTree.Get(1);
