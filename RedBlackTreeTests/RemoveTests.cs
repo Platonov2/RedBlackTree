@@ -18,5 +18,21 @@ namespace RedBlackTreeTests
 
             Assert.IsNull(redBlackTree.root);
         }
+
+        [TestMethod]
+        public void TwoSimpleDelets()
+        {
+            RedBlackTreeClass redBlackTree = new RedBlackTreeClass(2);
+
+            redBlackTree.Add(1);
+            redBlackTree.Add(3);
+
+            redBlackTree.Delete(1);
+            redBlackTree.Delete(3);
+
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
+
+            Assert.AreEqual(redBlackTree.root, rootNode);
+        }
     }
 }

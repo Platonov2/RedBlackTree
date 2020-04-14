@@ -30,7 +30,7 @@ namespace RedBlackTree
             InsertCase1(root);
         }
 
-        public void InsertCase1(RedBlackTreeNode node)
+        private void InsertCase1(RedBlackTreeNode node)
         {
             if (node.father == null)
             {
@@ -41,7 +41,7 @@ namespace RedBlackTree
             InsertCase2(node);
         }
 
-        public void InsertCase2(RedBlackTreeNode node)
+        private void InsertCase2(RedBlackTreeNode node)
         {
             if (node.father.color == Color.Black)
             {
@@ -51,7 +51,7 @@ namespace RedBlackTree
             InsertCase3(node);
         }
 
-        public void InsertCase3(RedBlackTreeNode node)
+        private void InsertCase3(RedBlackTreeNode node)
         {
             RedBlackTreeNode uncle = node.getUncle();
             RedBlackTreeNode grandFather = node.getGrandFather();
