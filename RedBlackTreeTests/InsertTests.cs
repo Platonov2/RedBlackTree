@@ -164,5 +164,46 @@ namespace RedBlackTreeTests
             Assert.AreEqual(redBlackTree.root.rightChild.rightChild, rr);
             Assert.AreEqual(redBlackTree.root.rightChild.rightChild.rightChild, rrr);
         }
+
+        [TestMethod]
+        public void Case1012572134()
+        {
+            RedBlackTreeClass redBlackTree = new RedBlackTreeClass(10);
+
+            redBlackTree.Add(12);
+            redBlackTree.Add(5);
+            redBlackTree.Add(7);
+            redBlackTree.Add(2);
+            redBlackTree.Add(1);
+            redBlackTree.Add(3);
+            redBlackTree.Add(4);
+
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(5, Color.Black, null, null, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(2, Color.Red, null, null, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(10, Color.Red, null, null, rootNode);
+            RedBlackTreeNode ll = new RedBlackTreeNode(1, Color.Black, null, null, l);
+            RedBlackTreeNode lr = new RedBlackTreeNode(3, Color.Black, null, null, l);
+            RedBlackTreeNode rl = new RedBlackTreeNode(7, Color.Black, null, null, r);
+            RedBlackTreeNode rr = new RedBlackTreeNode(12, Color.Black, null, null, r);
+            RedBlackTreeNode lrr = new RedBlackTreeNode(4, Color.Red, null, null, lr);
+
+            l.leftChild = ll;
+            l.rightChild = lr;
+            r.leftChild = rl;
+            r.rightChild = rr;
+            lr.rightChild = lrr;
+
+            rootNode.leftChild = l;
+            rootNode.rightChild = r;
+
+            Assert.AreEqual(redBlackTree.root, rootNode);
+            Assert.AreEqual(redBlackTree.root.leftChild, l);
+            Assert.AreEqual(redBlackTree.root.rightChild, r);
+            Assert.AreEqual(redBlackTree.root.leftChild.leftChild, ll);
+            Assert.AreEqual(redBlackTree.root.leftChild.rightChild, lr);
+            Assert.AreEqual(redBlackTree.root.rightChild.leftChild, rl);
+            Assert.AreEqual(redBlackTree.root.rightChild.rightChild, rr);
+            Assert.AreEqual(redBlackTree.root.leftChild.rightChild.rightChild, lrr);
+        }
     }
 }

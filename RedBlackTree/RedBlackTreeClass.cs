@@ -61,6 +61,7 @@ namespace RedBlackTree
                 node.father.color = Color.Black;
                 uncle.color = Color.Black;
                 grandFather.color = Color.Red;
+                InsertCase1(grandFather);
             }
             else InsertCase4(node);
         }
@@ -72,22 +73,10 @@ namespace RedBlackTree
             if (node == node.father.rightChild && node.father == grandFather.leftChild)
             {
                 RedBlackTreeNode.RotateLeft(node.father);
-                /*RedBlackTreeNode oldFather = grandFather.leftChild;
-                RedBlackTreeNode oldLeftChild = node.leftChild;
-                grandFather.leftChild = node;
-                node.leftChild = oldFather;
-                oldFather.rightChild = oldLeftChild;
-                node = node.leftChild;*/
             }
             else if (node == node.father.leftChild && node.father == grandFather.rightChild)
             {
                 RedBlackTreeNode.RotateRight(node.father);
-                /*RedBlackTreeNode oldFather = grandFather.rightChild;
-                RedBlackTreeNode oldRightChild = node.rightChild;
-                grandFather.rightChild = node;
-                node.rightChild = oldFather;
-                oldFather.leftChild = oldRightChild;
-                node = node.rightChild;*/
             }
 
             InsertCase5(node);
@@ -153,11 +142,24 @@ namespace RedBlackTree
             // Имеется оба потомка
             else
             {
+                RedBlackTreeNode nextNode = FindNext(node.value);
 
+                if (nextNode.rightChild != null)
+                {
+                    nextNode.rightChild.father = nextNode.father;
+                }
+                if (nextNode == root)
+                    root = nextNode.rightChild;
+                else nextNode.father.rightChild = nextNode.rightChild;
+
+                if (nextNode != node)
+                {
+                    node.color = nextNode.color;
+                    node.value = nextNode.value;
+                }
             }
 
         }
-
 
 
 
