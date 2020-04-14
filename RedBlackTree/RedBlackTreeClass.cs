@@ -138,15 +138,22 @@ namespace RedBlackTree
                 return;
             }
 
+            // Один левый потомок
             if (node.leftChild != null && node.rightChild == null)
             {
                 father.leftChild = node.leftChild;
                 node.leftChild.father = father;
             }
+            // Один правый потомок
             else if (node.leftChild == null && node.rightChild != null)
             {
                 father.rightChild = node.rightChild;
                 node.rightChild.father = father;
+            }
+            // Имеется оба потомка
+            else
+            {
+
             }
 
         }
@@ -202,6 +209,26 @@ namespace RedBlackTree
                     else currentNode = currentNode.rightChild;
                 }
             }
+        }
+
+        public RedBlackTreeNode FindNext(int value)
+        {
+            RedBlackTreeNode currentNode = Get(value);
+
+            if (currentNode.rightChild == null)
+            {
+                if (currentNode.value > currentNode.father.value)
+                    return null;
+                return currentNode.father;
+            }
+
+            currentNode = currentNode.rightChild;
+
+            while (currentNode.leftChild != null)
+            {
+                currentNode = currentNode.leftChild;
+            }
+            return currentNode;
         }
     }
 }
