@@ -47,10 +47,10 @@ namespace RedBlackTreeTests
             redBlackTree.Add(4);
             redBlackTree.Add(3);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(5, Color.Black, null, null, null);
-            RedBlackTreeNode ll = new RedBlackTreeNode(3, Color.Red, null, null, rootNode);
-            RedBlackTreeNode l = new RedBlackTreeNode(4, Color.Black, ll, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(6, Color.Black, null, null, rootNode);
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(5, Color.Black, null);
+            RedBlackTreeNode ll = new RedBlackTreeNode(3, Color.Red, rootNode);
+            RedBlackTreeNode l = new RedBlackTreeNode(4, Color.Black, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(6, Color.Black, rootNode);
 
             rootNode.leftChild = l;
             rootNode.rightChild = r;
@@ -69,9 +69,9 @@ namespace RedBlackTreeTests
             redBlackTree.Add(2);
             redBlackTree.Add(3);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
-            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Red, null, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Red, null, null, rootNode);
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Red, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Red, rootNode);
 
             rootNode.leftChild = l;
             rootNode.rightChild = r;
@@ -90,10 +90,10 @@ namespace RedBlackTreeTests
             redBlackTree.Add(3);
             redBlackTree.Add(4);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
-            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, null, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Black, null, null, rootNode);
-            RedBlackTreeNode rr = new RedBlackTreeNode(4, Color.Red, null, null, rootNode);    
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(3, Color.Black, rootNode);
+            RedBlackTreeNode rr = new RedBlackTreeNode(4, Color.Red, rootNode);    
 
             rootNode.leftChild = l;
             rootNode.rightChild = r;
@@ -115,11 +115,11 @@ namespace RedBlackTreeTests
             redBlackTree.Add(4);
             redBlackTree.Add(5);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
-            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, null, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(4, Color.Black, null, null, rootNode);
-            RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Red, null, null, r);
-            RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Red, null, null, r);
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(4, Color.Black, rootNode);
+            RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Red, r);
+            RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Red, r);
 
             rootNode.leftChild = l;
             rootNode.rightChild = r;
@@ -144,12 +144,12 @@ namespace RedBlackTreeTests
             redBlackTree.Add(5);
             redBlackTree.Add(6);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null, null, null);
-            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, null, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(4, Color.Red, null, null, rootNode);
-            RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Black, null, null, r);
-            RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Black, null, null, r);
-            RedBlackTreeNode rrr = new RedBlackTreeNode(6, Color.Red, null, null, rr);
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(2, Color.Black, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(1, Color.Black, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(4, Color.Red, rootNode);
+            RedBlackTreeNode rl = new RedBlackTreeNode(3, Color.Black, r);
+            RedBlackTreeNode rr = new RedBlackTreeNode(5, Color.Black, r);
+            RedBlackTreeNode rrr = new RedBlackTreeNode(6, Color.Red, rr);
 
             rootNode.leftChild = l;
             rootNode.rightChild = r;
@@ -178,14 +178,14 @@ namespace RedBlackTreeTests
             redBlackTree.Add(3);
             redBlackTree.Add(4);
 
-            RedBlackTreeNode rootNode = new RedBlackTreeNode(5, Color.Black, null, null, null);
-            RedBlackTreeNode l = new RedBlackTreeNode(2, Color.Red, null, null, rootNode);
-            RedBlackTreeNode r = new RedBlackTreeNode(10, Color.Red, null, null, rootNode);
-            RedBlackTreeNode ll = new RedBlackTreeNode(1, Color.Black, null, null, l);
-            RedBlackTreeNode lr = new RedBlackTreeNode(3, Color.Black, null, null, l);
-            RedBlackTreeNode rl = new RedBlackTreeNode(7, Color.Black, null, null, r);
-            RedBlackTreeNode rr = new RedBlackTreeNode(12, Color.Black, null, null, r);
-            RedBlackTreeNode lrr = new RedBlackTreeNode(4, Color.Red, null, null, lr);
+            RedBlackTreeNode rootNode = new RedBlackTreeNode(5, Color.Black, null);
+            RedBlackTreeNode l = new RedBlackTreeNode(2, Color.Red, rootNode);
+            RedBlackTreeNode r = new RedBlackTreeNode(10, Color.Red, rootNode);
+            RedBlackTreeNode ll = new RedBlackTreeNode(1, Color.Black, l);
+            RedBlackTreeNode lr = new RedBlackTreeNode(3, Color.Black, l);
+            RedBlackTreeNode rl = new RedBlackTreeNode(7, Color.Black, r);
+            RedBlackTreeNode rr = new RedBlackTreeNode(12, Color.Black, r);
+            RedBlackTreeNode lrr = new RedBlackTreeNode(4, Color.Red, lr);
 
             l.leftChild = ll;
             l.rightChild = lr;

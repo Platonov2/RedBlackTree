@@ -15,10 +15,20 @@
             this.value = value;
             this.color = color;
             this.leftChild = leftChild;
+            this.rightChild = rightChild;
             this.father = father;
         }
 
-        public RedBlackTreeNode getGrandFather()
+        public RedBlackTreeNode(int value, Color color, RedBlackTreeNode father)
+        {
+            this.value = value;
+            this.color = color;
+            this.leftChild = new RedBlackTreeNode(0, Color.Black, null, null, this);
+            this.rightChild = new RedBlackTreeNode(0, Color.Black, null, null, this);
+            this.father = father;
+        }
+
+        public RedBlackTreeNode GetGrandFather()
         {
             if (father != null && father.father != null)
             {
@@ -27,9 +37,9 @@
             return null;
         }
 
-        public RedBlackTreeNode getUncle()
+        public RedBlackTreeNode GetUncle()
         {
-            RedBlackTreeNode grandFather = getGrandFather();
+            RedBlackTreeNode grandFather = GetGrandFather();
 
             if (grandFather == null)
                 return null;
@@ -39,60 +49,25 @@
             return grandFather.leftChild;
         }
 
-        public static void RotateRight(RedBlackTreeNode node)
+        public RedBlackTreeNode GetBrother()
         {
-            RedBlackTreeNode pivot = node.leftChild;
+            if (father == null) return null;
 
-            pivot.father = node.father;
-
-            if (node.father != null)
-            {
-                if (node.father.leftChild == node)
-                    node.father.leftChild = pivot;
-                else
-                    node.father.rightChild = pivot;
-            }
-
-            node.leftChild = pivot.rightChild;
-
-            if (pivot.rightChild != null)
-                pivot.rightChild.father = node;
-
-            node.father = pivot;
-            pivot.rightChild = node;
+            if (father.leftChild == this && father.rightChild.value != 0)
+                return father.rightChild;
+            if (father.rightChild == this && father.leftChild.value != 0)
+                return father.leftChild;
+            return null;
         }
 
-        public static void RotateLeft(RedBlackTreeNode node)
+        public static bool IsLeaf(RedBlackTreeNode node)
         {
-            RedBlackTreeNode pivot = node.rightChild;
-
-            pivot.father = node.father;
-
-            if (node.father != null)
-            {
-                if (node.father.leftChild == node)
-                    node.father.leftChild = pivot;
-                else
-                    node.father.rightChild = pivot;
-            }
-
-            node.rightChild = pivot.leftChild;
-
-            if (pivot.leftChild != null)
-                pivot.leftChild.father = node;
-
-            node.father = pivot;
-            pivot.leftChild = node;
+            return node != null && node.leftChild == null && node.rightChild == null;
         }
 
         public override bool Equals(object obj)
         {
             RedBlackTreeNode tempObj = (RedBlackTreeNode) obj;
-
-            if ((leftChild == null && tempObj.leftChild != null) || (rightChild == null && tempObj.rightChild != null)
-             || (leftChild != null && tempObj.leftChild == null) || (rightChild != null && tempObj.rightChild == null)
-             || (father == null && tempObj.father != null) || (father != null && tempObj.father == null))
-                return false;
 
             return (value == tempObj.value && color == tempObj.color);
         }
