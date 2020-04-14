@@ -138,6 +138,17 @@ namespace RedBlackTree
                 return;
             }
 
+            if (node.leftChild != null && node.rightChild == null)
+            {
+                father.leftChild = node.leftChild;
+                node.leftChild.father = father;
+            }
+            else if (node.leftChild == null && node.rightChild != null)
+            {
+                father.rightChild = node.rightChild;
+                node.rightChild.father = father;
+            }
+
         }
 
 
