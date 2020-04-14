@@ -119,6 +119,31 @@ namespace RedBlackTree
             root = node;
         }
 
+
+
+
+        public void Delete(int value)
+        {
+            RedBlackTreeNode node = Get(value);
+            RedBlackTreeNode father = node.father;
+
+            if (node.leftChild == null && node.rightChild == null)
+            {
+                if (father == null)
+                    root = null;
+                else if (father.leftChild == node)
+                    father.leftChild = null;
+                else father.rightChild = null;
+
+                return;
+            }
+
+        }
+
+
+
+
+
         public RedBlackTreeNode Get(int value)
         {
             RedBlackTreeNode currentNode = root;
