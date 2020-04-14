@@ -154,8 +154,11 @@ namespace RedBlackTree
 
                 if (nextNode != node)
                 {
-                    node.color = nextNode.color;
                     node.value = nextNode.value;
+                    node.rightChild.color = nextNode.color;
+                    
+                    if (nextNode.color != Color.Black)
+                        InsertCase1(nextNode);
                 }
             }
 
